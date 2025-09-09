@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2 class="mb-4">Monthly Report ({{ month }})</h2>
+
+  <!-- Summary -->
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="card text-white bg-success mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Total Income</h5>
+          <p class="card-text fs-4">₹ {{ "%.2f"|format(totals.income) }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card text-white bg-danger mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Total Expense</h5>
+          <p class="card-text fs-4">₹ {{ "%.2f"|format(totals.expense) }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category Breakdown -->
+  <h4 class="mt-4">Category Breakdown</h4>
+  <table class="table table-hover table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>Category</th>
+        <th>Type</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for c in cat_breakdown %}
+        <tr>
+          <td>{{ c.category }}</td>
+          <td>
+            {% if c.type == "income" %}
+              <span class="badge bg-success">Income</span>
+            {% else %}
+              <span class="badge bg-danger">Expense</span>
+            {% endif %}
+          </td>
+          <td>₹ {{ "%.2f"|format(c.total) }}</td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="3" class="text-center text-muted">No data for this month.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Transaction List -->
+  <h4 class="mt-4">Transactions</h4>
+  <table class="table table-striped table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for t in transactions %}
+        <tr>
+          <td>{{ t.date }}</td>
+          <td>
+            {% if t.type == "income" %}
+              <span class="badge bg-success">Income</span>
+            {% else %}
+              <span class="badge bg-danger">Expense</span>
+            {% endif %}
+          </td>
+          <td>₹ {{ "%.2f"|format(t.amount) }}</td>
+          <td>{{ t.category }}</td>
+          <td>{{ t.description }}</td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="5" class="text-center text-muted">No transactions found.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

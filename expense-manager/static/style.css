@@ -1,0 +1,16 @@
+body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f6f7fb; color:#222; }
+.topnav { background:#2b6cb0; padding:10px; display:flex; gap:12px; }
+.topnav a { color:white; text-decoration:none; font-weight:600; }
+.container { padding:20px; max-width:1000px; margin:0 auto; }
+.transactions { width:100%; border-collapse:collapse; margin-top:10px; background:white; }
+.transactions th, .transactions td { padding:8px 10px; border:1px solid #e6e6e6; }
+.simple th, .simple td { padding:6px 8px; border:1px solid #ddd; }
+.txform label { display:block; margin:10px 0; }
+.txform input, .txform select { padding:6px; width:100%; max-width:420px; }
+.btn, .link-like { display:inline-block; padding:6px 10px; background:#ccc; color:#000; text-decoration:none; border-radius:4px; margin-left:6px; }
+.flash-container { margin-bottom:10px; }
+.flash { padding:8px 10px; border-radius:4px; margin-bottom:6px; }
+.flash.success { background:#e6ffed; color:#065f46; }
+.flash.danger { background:#ffe6e6; color:#7a1a1a; }
+.filters { display:flex; gap:12px; align-items:center; margin:12px 0; }
+.summary { display:flex; gap:20px; padding:12px; background:white; border:1px solid #eee; margin-bottom:12px; }
